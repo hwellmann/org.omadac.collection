@@ -1,0 +1,9 @@
+.project
+.classpath
+.settings
+.ceylon
+modules
+build.properties
+
+/bin
+/classes
