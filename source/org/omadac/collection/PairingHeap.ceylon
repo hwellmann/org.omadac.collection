@@ -109,7 +109,7 @@ shared class PairingHeap<Key, Item>()
         else {
             if (exists m = min) {
                 min = join(m, node);
-                min?.previous = null;
+                m.previous = null;
             }
         }
         numItems++;
@@ -168,8 +168,8 @@ shared class PairingHeap<Key, Item>()
             if (exists m = min, exists mc = m.child) {
                 mc.previous = null;
                 min = merge(mc);
-                min?.previous = null;
-                min?.next = null;
+                m.previous = null;
+                m.next = null;
             }
         }
         numItems--;
@@ -298,10 +298,10 @@ shared class PairingHeap<Key, Item>()
             return other;
         }
     }
-    
-    shared actual PairingHeap<Key, Item> clone {
-        value copy = PairingHeap<Key, Item>();
-        copy.insertAll(this);
-        return copy;		
-    }	
+
+    shared actual Collection<HeapEntry<Key,Item>> clone() {
+            value copy = PairingHeap<Key, Item>();
+            copy.insertAll(this);
+            return copy;		        
+    }    
 }
